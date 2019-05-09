@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="css/style.css"/>
+		
+		<script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    	<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+		
+	</head>
+
+	<body>
+		<div id = "header">
+			<div id = "title">
+				<h1>Memory</h1>
+			</div>
+			<div class = "gameTrackers">
+  					<h4>Timer:</h4>
+  					<h4>Moves: {{ moves }}</h4>
+  			</div>
+			<div class = "gameControls">
+				<div id = "selectSuit">
+					<select id = "suit" v-model = "suitType">
+            			<option v-for = "option in suitTypeOptions" v-bind:value="option.value">{{ option.text }}</option>
+        			</select>
+        			<button id = "startGame">New Game</button>
+  				</div>
+			</div>
+		</div>
+
+		<div id = "gameContent">
+		</div>
+		
+
+		<script src="scripts/game.js"></script>
+		<script> 
+			var app = new Vue({
+				el: '#app',
+					data: { 
+						moves: 0
+					}	
+			});
+			var init = init() 
+		</script>
+	
+
+	</body>
+</html>
