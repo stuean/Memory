@@ -17,17 +17,17 @@
 			<div id = "title">
 				<h1>Memory</h1>
 			</div>
-			<div class = "gameTrackers">
+			<div id = "gameTrackers">
   					<h4>Timer:</h4>
-  					<h4>Moves: {{ moves }}</h4>
+  					<output id="timer">00:00</output>
+  					<h4>Moves:</h4>
+  					<p id = "moveCount"></p>
   			</div>
-			<div class = "gameControls">
-				<div id = "selectSuit">
-					<select id = "suit" v-model = "suitType">
-            			<option v-for = "option in suitTypeOptions" v-bind:value="option.value">{{ option.text }}</option>
-        			</select>
-        			<button id = "startGame">New Game</button>
-  				</div>
+			<div id = "gameControls">
+				<select id = "suit" v-model = "gameType">
+            		<option v-for = "option in gameTypeOptions" v-bind:value="option.value">{{ option.text }}</option>
+        		</select>
+       			<button id = "startGame">New Game</button>
 			</div>
 		</div>
 
@@ -37,12 +37,7 @@
 
 		<script src="scripts/game.js"></script>
 		<script> 
-			var app = new Vue({
-				el: '#app',
-					data: { 
-						moves: 0
-					}	
-			});
+			
 			var init = init() 
 		</script>
 	
