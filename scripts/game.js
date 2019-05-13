@@ -7,15 +7,43 @@ var timeBegan = null;
 var timeStopped = null;
 var started = null;
 
-
 function init(){
 	var app = new Vue({
 		el: '#app',
 		data: { 
-
+			user_search: "",
+			pass_search: "",
+			search_results: []
 		}	
 	});
-	gameSetup();
+
+}
+
+function UserSearch(event) {
+    if (app.user_search !== "") {
+        GetJson("/Uname?" + app.user_search).then((data) => {
+            app.search_results = data;
+            console.log(data);
+            if(search_results !== []){
+            	CheckPass();
+            }
+            else{
+            	alert('You do not have an account!');
+            }
+        });
+    }
+}
+
+function CheckPass(){
+	
+}
+
+function GetJson(url) {
+    return new Promise((resolve, reject) => {
+        $.get(url, (data) => {
+            resolve(data);
+        }, "json");
+    });
 }
 
 function gameSetup(){
@@ -71,7 +99,7 @@ function flip(i){
 		var img = document.getElementById("img"+i);
 		img.src = cards[i].img;
 		flipNum = 1;
-		setTimeout(function(){ flip2(i); }, 750);
+		setTimeout(function(){ flip2(i); }, 1500);
 	}
 }
 

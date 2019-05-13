@@ -8,21 +8,48 @@
 
 		<script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     	<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
-		<link rel = "stylesheet" href="style.css">
+
+    	<link rel = "stylesheet" href = "css/style.css"/>
+		
 	</head>
 	<body>
-		<div id = "title">
-			<h1>Memory</h1>
+		<div id = "header">
+			<div id = "title">
+				<h1>Sign in to play Memory!</h1>
+				<button id = "play">PLAY GAME!</button>
+			</div>
 		</div>
 
 		<div id = "user_login">
+			<h3>Returning Player</h3>
+			<label for="search1">Enter Username:</label>
+                <div>
+          	        <input id="search1" type="text" v-model="user_search" :placeholder="input_placeholder"></input>
+                </div>
+            <label for="search2">Enter Password:</label>
+                <div>
+                    <input id="search2" type="text" v-model="pass_search" :placeholder="input_placeholder"></input>
+                </div>
+            <button type="button" @click="UserSearch">Submit</button>
+			<!--<form action = "/upload" method = "POST" enctype="multipart/form-data">
+				User Name: <input type = "text" v-model = "user_search" name = "uname"/><br/>
+				Password: <input type = "text" v-model = "pass_search" name = "password"/><br/>
+				<input type = "submit" value = "Submit" @click = "UserSearch"/>
+			</form>-->
+		</div>
+		<div id = "new_user">
+			<h3>New Player</h3>
 			<form action = "/upload" method = "POST" enctype="multipart/form-data">
-				User Name: <input type = "text" name = "uname"/><br/>
-				Password: <input type = "text" name = "password"/><br/>
+				New User Name: <input type = "text" name = "uname"/><br/>
+				New Password: <input type = "text" name = "password"/><br/>
 				<input type = "submit" value = "Submit"/>
 			</form>
 		</div>
 
+		<script src="scripts/game.js"></script>
+		<script> 
+			var init = init() 
+		</script>
 
 	</body>
 </html>

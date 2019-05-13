@@ -19,7 +19,7 @@ img{
 #header{
 	height: 7rem;
 	background-color: #f0bfff;
-	margin-bottom: 5rem;
+	margin-bottom: 1rem;
 	display: block;
 }
 #title{
@@ -29,6 +29,17 @@ img{
 }
 #gameTrackers{
 	display: block;
+}
+#user_login{
+	width: 30%;
+	text-align: center;
+	display: inline-block;
+}
+#new_user{
+	width: 30%;
+	text-align: center;
+	display: inline-block;
+	margin-bottom: 4rem;
 }
 #img0{
 	grid-column: 1 / 1;
