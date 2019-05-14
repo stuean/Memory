@@ -6,6 +6,8 @@ var moves = 0;
 var timeBegan = null;
 var timeStopped = null;
 var started = null;
+var mode;
+var count = 0;
 
 function init(){
 	var app = new Vue({
@@ -46,7 +48,28 @@ function GetJson(url) {
     });
 }
 
-function gameSetup(){
+function easy(){
+	moves = 0;
+	document.getElementById("gameContent").innerHTML = "";
+	mode = 1500;
+	gameSetup(mode);
+}
+function medium(){
+	moves = 0;
+	document.getElementById("gameContent").innerHTML = "";
+	mode = 750;
+	gameSetup(mode);
+}
+function hard(){
+	moves = 0;
+	document.getElementById("gameContent").innerHTML = "";
+	mode = 250;
+	gameSetup(mode);
+}
+
+
+
+function gameSetup(mode){
 	cards[0] = new Card('images/campus.JPG', 'images/cardback.JPG');
 	cards[1] = new Card('images/campus.JPG', 'images/cardback.JPG');
 	cards[2] = new Card('images/cat.JPG', 'images/cardback.JPG');
@@ -73,7 +96,7 @@ function gameSetup(){
 	for(var i = 0; i < cards.length; i++){
 		var img = document.createElement('img');
 		img.setAttribute("id", "img" + i);
-		img.setAttribute("onclick", "flip(" + i + ")");
+		img.setAttribute("onclick", "flip(" + i + "," + mode + ")");
 		img.src = cards[i].back;
 		document.getElementById("gameContent").appendChild(img);
 		document.getElementById("moveCount").innerHTML = moves;
@@ -88,7 +111,7 @@ function shuffle(cards){
 		}
 }
 
-function flip(i){
+function flip(i, mode){
 	if(flipNum === 1){
 		var img = document.getElementById("img"+i);
 		img.src = cards[i].img;
@@ -99,7 +122,7 @@ function flip(i){
 		var img = document.getElementById("img"+i);
 		img.src = cards[i].img;
 		flipNum = 1;
-		setTimeout(function(){ flip2(i); }, 1500);
+		setTimeout(function(){ flip2(i); }, mode);
 	}
 }
 

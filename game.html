@@ -24,13 +24,17 @@
   					<p id = "moveCount"></p>
   			</div>
 			<div id = "gameControls">
-				<select id = "suit" v-model = "gameType">
+		<!--		<select id = "suit" v-model = "gameType">
             		<option v-for = "option in gameTypeOptions" v-bind:value="option.value">{{ option.text }}</option>
-        		</select>
-       			<button id = "startGame">New Game</button>
+        		</select>-->
+				<p>Select Difficulty:</p>
+       			<button id = "easy" onclick="easy()">Easy</button>
+				<button id = "medium" onclick="medium()">Medium</button>
+				<button id = "hard" onclick="hard()">Hard</button>
 			</div>
 		</div>
 
+	
 		<div id = "gameContent">
 		</div>
 		

@@ -10,6 +10,20 @@ body{
 	background-image: linear-gradient(white, grey);
 }
 
+#gameContent{
+	margin-top: 250px;
+}
+
+#easy{
+	grid-column: 1 / 3;
+}
+#medium{
+	grid-column: 4 / 6;
+}
+#hard{
+	grid-column: 7 / 9;
+}
+
 img{
 	width: 200px;
 	height: auto;
