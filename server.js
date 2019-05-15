@@ -59,7 +59,7 @@ app.get('/NewU', (req, res) => {
         if (err) {
             console.log(err);
         }
-        else if (rows[0].uname === undefined){
+        else if (rows[0] === undefined){
       		console.log("User does not exist");
       		db.all('INSERT INTO users (uname, pass) VALUES (? , ?)' [q[0], q[1]], (err, rows)=>{
       			if (err){
