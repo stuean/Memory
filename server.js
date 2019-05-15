@@ -24,8 +24,8 @@ app.get('/Uname', (req, res) => {
     var req_url = url.parse(req.url);
     var q = req_url.query.split("&");
     var hash = q[1];
-    console.log(q);
-    console.log(hash);
+   // console.log(q);
+   // console.log(hash);
     db.all('SELECT * FROM users WHERE uname = ?', [q[0]], (err, rows) => {
         if (err) {
             console.log(err);

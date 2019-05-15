@@ -101,29 +101,29 @@ function hard(){
 
 
 function gameSetup(mode){
-	cards[0] = new Card('images/campus.JPG', 'images/cardback.JPG');
-	cards[1] = new Card('images/campus.JPG', 'images/cardback.JPG');
-	cards[2] = new Card('images/cat.JPG', 'images/cardback.JPG');
-	cards[3] = new Card('images/cat.JPG', 'images/cardback.JPG');
-	cards[4] = new Card('images/chapel.JPG', 'images/cardback.JPG');
-	cards[5] = new Card('images/chapel.JPG', 'images/cardback.JPG');
-	cards[6] = new Card('images/crest.JPG', 'images/cardback.JPG');
-	cards[7] = new Card('images/crest.JPG', 'images/cardback.JPG');
-	cards[8] = new Card('images/football.JPG', 'images/cardback.JPG');
-	cards[9] = new Card('images/football.JPG', 'images/cardback.JPG');
-	cards[10] = new Card('images/gym.JPG', 'images/cardback.JPG');
-	cards[11] = new Card('images/gym.JPG', 'images/cardback.JPG');
-	cards[12] = new Card('images/name.JPG', 'images/cardback.JPG');
-	cards[13] = new Card('images/name.JPG', 'images/cardback.JPG');
-	cards[14] = new Card('images/quad.JPG', 'images/cardback.JPG');
-	cards[15] = new Card('images/quad.JPG', 'images/cardback.JPG');
-	cards[16] = new Card('images/soccer.JPG', 'images/cardback.JPG');
-	cards[17] = new Card('images/soccer.JPG', 'images/cardback.JPG');
-	cards[18] = new Card('images/students.JPG', 'images/cardback.JPG');
-	cards[19] = new Card('images/students.JPG', 'images/cardback.JPG');
+	cards[0] = new Card('/images/campus.JPG', '/images/cardback.JPG');
+	cards[1] = new Card('/images/campus.JPG', '/images/cardback.JPG');
+	cards[2] = new Card('/images/cat.JPG', '/images/cardback.JPG');
+	cards[3] = new Card('/images/cat.JPG', '/images/cardback.JPG');
+	cards[4] = new Card('/images/chapel.JPG', '/images/cardback.JPG');
+	cards[5] = new Card('/images/chapel.JPG', '/images/cardback.JPG');
+	cards[6] = new Card('/images/crest.JPG', '/images/cardback.JPG');
+	cards[7] = new Card('/images/crest.JPG', '/images/cardback.JPG');
+	cards[8] = new Card('/images/football.JPG', '/images/cardback.JPG');
+	cards[9] = new Card('/images/football.JPG', '/images/cardback.JPG');
+	cards[10] = new Card('/images/gym.JPG', '/images/cardback.JPG');
+	cards[11] = new Card('/images/gym.JPG', '/images/cardback.JPG');
+	cards[12] = new Card('/images/name.JPG', '/images/cardback.JPG');
+	cards[13] = new Card('/images/name.JPG', '/images/cardback.JPG');
+	cards[14] = new Card('/images/quad.JPG', '/images/cardback.JPG');
+	cards[15] = new Card('/images/quad.JPG', '/images/cardback.JPG');
+	cards[16] = new Card('/images/soccer.JPG', '/images/cardback.JPG');
+	cards[17] = new Card('/images/soccer.JPG', '/images/cardback.JPG');
+	cards[18] = new Card('/images/students.JPG', '/images/cardback.JPG');
+	cards[19] = new Card('/images/students.JPG', '/images/cardback.JPG');
 	
 	shuffle(cards);
-	console.log(cards);
+	//console.log(cards);
 	
 	for(var i = 0; i < cards.length; i++){
 		var img = document.createElement('img');
