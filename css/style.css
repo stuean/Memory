@@ -34,7 +34,7 @@ img{
 	height: 7rem;
 	background-color: #f0bfff;
 	margin-bottom: 1rem;
-	display: block;
+	display: inline;
 }
 #title{
 	text-align: left;

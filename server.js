@@ -2,6 +2,7 @@ var path = require('path');
 var url = require('url');
 var express = require('express');
 var sqlite3 = require('sqlite3');
+var md5 = require('md5');
 
 var app = express();
 var port = 8014;
@@ -61,23 +62,25 @@ app.get('/NewU', (req, res) => {
         }
         else if (rows[0] === undefined){
       		console.log("User does not exist");
-      		db.all('INSERT INTO users (uname, pass) VALUES (? , ?)' [q[0], q[1]], (err, rows)=>{
+      		db.run('INSERT INTO users (uname, pass) VALUES (? , ?)', [q[0], hash], (err) =>{
       			if (err){
       				console.log(err);
       			}
-      			else{
-      				res.writeHead(200, {'Content-Type': 'application/json'});
-      				res.write(JSON.stringify(rows));
-      				res.end();
-      			}
+            else{
+              console.log("Hello");
+            }
       		});
-		}
-		else{ 
-			console.log("User already exist");
-			res.writeHead(200, {'Content-Type': 'application/json'});
-            res.write("false");
-            res.end();
-		}   
+          db.close();
+          res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write("success");
+          res.end();
+		    }
+		    else{ 
+			     console.log("User already exist");
+			   res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write("false");
+          res.end();
+		    }   
     });
 });
 

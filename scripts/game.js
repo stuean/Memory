@@ -15,6 +15,7 @@ function init(){
 	console.log("loaded");
 
 	$("#submit").click(UserSearch);
+	$("#submitNew").click(NewUser);
 }
 
 function UserSearch() {
@@ -36,18 +37,18 @@ function UserSearch() {
 }
 
 function NewUser(){
-	if ($("#uname").val() !== "") {
-    	user = $("#uname").val();
-    	pass = $("#password").val();
-    	console.log(user);
+	if ($("#uname2").val() !== "") {
+    	user = $("#uname2").val();
+    	pass = $("#password2").val();
+    	//console.log(user);
         GetJson("/NewU?" + user + "&" + pass).then((data) => {
             console.log(data);
-            if (data === "false"){
+            if (data === false){
             	existingUser();
             }
             else{
             	console.log(data);
-            	//Add alert, click here to play game... send to game.html
+            	successfulSignIn();
             }
         });
     }
