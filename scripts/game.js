@@ -8,37 +8,51 @@ var timeStopped = null;
 var started = null;
 var mode;
 var count = 0;
+var user;
+var pass;
 
 function init(){
-	var app = new Vue({
-		el: '#app',
-		data: { 
-			user_search: "",
-			pass_search: "",
-			search_results: []
-		}	
-	});
+	console.log("loaded");
 
+	$("#submit").click(UserSearch);
 }
 
-function UserSearch(event) {
-    if (app.user_search !== "") {
-        GetJson("/Uname?" + app.user_search).then((data) => {
-            app.search_results = data;
+function UserSearch() {
+    if ($("#uname").val() !== "") {
+    	user = $("#uname").val();
+    	pass = $("#password").val();
+    	console.log(user);
+        GetJson("/Uname?" + user + "&" + pass).then((data) => {
             console.log(data);
-            if(search_results !== []){
-            	CheckPass();
+            if (data === "false"){
+            	//Add alert, wrong password
             }
             else{
-            	alert('You do not have an account!');
+            	console.log(data);
+            	//Add alert, click here to play game... send to game.html
             }
         });
     }
 }
 
-function CheckPass(){
-	
+function NewUser(){
+	if ($("#uname").val() !== "") {
+    	user = $("#uname").val();
+    	pass = $("#password").val();
+    	console.log(user);
+        GetJson("/NewU?" + user + "&" + pass).then((data) => {
+            console.log(data);
+            if (data === "false"){
+            	//Add alert, wrong password
+            }
+            else{
+            	console.log(data);
+            	//Add alert, click here to play game... send to game.html
+            }
+        });
+    }
 }
+
 
 function GetJson(url) {
     return new Promise((resolve, reject) => {
@@ -47,6 +61,14 @@ function GetJson(url) {
         }, "json");
     });
 }
+
+
+
+
+
+
+
+
 
 function easy(){
 	moves = 0;
@@ -66,7 +88,6 @@ function hard(){
 	mode = 250;
 	gameSetup(mode);
 }
-
 
 
 function gameSetup(mode){

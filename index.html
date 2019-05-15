@@ -16,26 +16,14 @@
 		<div id = "header">
 			<div id = "title">
 				<h1>Sign in to play Memory!</h1>
-				<button id = "play">PLAY GAME!</button>
 			</div>
 		</div>
-
 		<div id = "user_login">
 			<h3>Returning Player</h3>
-			<label for="search1">Enter Username:</label>
-                <div>
-          	        <input id="search1" type="text" v-model="user_search" :placeholder="input_placeholder"></input>
-                </div>
-            <label for="search2">Enter Password:</label>
-                <div>
-                    <input id="search2" type="text" v-model="pass_search" :placeholder="input_placeholder"></input>
-                </div>
-            <button type="button" @click="UserSearch">Submit</button>
-			<!--<form action = "/upload" method = "POST" enctype="multipart/form-data">
-				User Name: <input type = "text" v-model = "user_search" name = "uname"/><br/>
-				Password: <input type = "text" v-model = "pass_search" name = "password"/><br/>
-				<input type = "submit" value = "Submit" @click = "UserSearch"/>
-			</form>-->
+			<p>User Name:</p> <input type = "text" id = "uname" name = "uname"/><br/>
+			<p>Password:</p> <input type = "text" id = "password" name = "password"/><br/>
+			<button id = "submit">Submit</button>
+
 		</div>
 		<div id = "new_user">
 			<h3>New Player</h3>

@@ -45,12 +45,10 @@ img{
 	display: block;
 }
 #user_login{
-	width: 30%;
 	text-align: center;
 	display: inline-block;
 }
 #new_user{
-	width: 30%;
 	text-align: center;
 	display: inline-block;
 	margin-bottom: 4rem;
