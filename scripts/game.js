@@ -24,12 +24,12 @@ function UserSearch() {
     	console.log(user);
         GetJson("/Uname?" + user + "&" + pass).then((data) => {
             console.log(data);
-            if (data === "false"){
-            	//Add alert, wrong password
+            if (data === false){
+            	unsuccessfulSignIn();
             }
             else{
             	console.log(data);
-            	//Add alert, click here to play game... send to game.html
+            	successfulSignIn();
             }
         });
     }
@@ -43,7 +43,7 @@ function NewUser(){
         GetJson("/NewU?" + user + "&" + pass).then((data) => {
             console.log(data);
             if (data === "false"){
-            	//Add alert, wrong password
+            	existingUser();
             }
             else{
             	console.log(data);
@@ -62,10 +62,20 @@ function GetJson(url) {
     });
 }
 
+function successfulSignIn(){
+	if(confirm("You have successfully signed in! Click 'OK' to play!")){
+		console.log(user);
+		window.open("game.html", '_self');
+	}
+}
 
+function unsuccessfulSignIn(){
+	alert("Wrong user name or password. Please try again.");
+}
 
-
-
+function existingUser(){
+	alert("User already exists, please choose a different user name");
+}
 
 
 
@@ -113,6 +123,7 @@ function gameSetup(mode){
 	cards[19] = new Card('images/students.JPG', 'images/cardback.JPG');
 	
 	shuffle(cards);
+	console.log(cards);
 	
 	for(var i = 0; i < cards.length; i++){
 		var img = document.createElement('img');

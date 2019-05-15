@@ -30,9 +30,15 @@ app.get('/Uname', (req, res) => {
         if (err) {
             console.log(err);
         }
-        else if (rows[0].pass !== hash){
-      		console.log("Wrong password");
+        else if (rows[0] === undefined){
+      		console.log("User doesn't exist");
       		res.writeHead(200, {'Content-Type': 'application/json'});
+      		res.write("false");
+      		res.end();
+		}
+		else if (rows[0].pass !== hash){
+			console.log("Wrong password");
+			res.writeHead(200, {'Content-Type': 'application/json'});
       		res.write("false");
       		res.end();
 		}
@@ -61,7 +67,7 @@ app.get('/NewU', (req, res) => {
       			}
       			else{
       				res.writeHead(200, {'Content-Type': 'application/json'});
-      				res.write("false");
+      				res.write(JSON.stringify(rows));
       				res.end();
       			}
       		});
@@ -69,7 +75,7 @@ app.get('/NewU', (req, res) => {
 		else{ 
 			console.log("User already exist");
 			res.writeHead(200, {'Content-Type': 'application/json'});
-            res.write("Already Exists");
+            res.write("false");
             res.end();
 		}   
     });
