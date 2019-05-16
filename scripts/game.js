@@ -6,6 +6,7 @@ var moves = 0;
 var timeBegan = null;
 var timeStopped = null;
 var started = null;
+var difficulty;
 var mode;
 var count = 0;
 var user;
@@ -55,6 +56,14 @@ function NewUser(){
     }
 }
 
+function AddStats(){
+	var time = $("#timer").val();
+	console.log(time);
+	GetJson("/newGame?" + user + "&" + difficulty + "&" moves + "&" + time).then((data) => {
+		console.log(data);
+	});
+}
+
 function updateBoard(){
 	GetJson("/Leaderboard").then((data) => {
 			console.log(data);
@@ -89,18 +98,21 @@ function existingUser(){
 
 
 function easy(){
+	difficulty = "easy";
 	moves = 0;
 	document.getElementById("gameContent").innerHTML = "";
 	mode = 1500;
 	gameSetup(mode);
 }
 function medium(){
+	difficulty = "medium";
 	moves = 0;
 	document.getElementById("gameContent").innerHTML = "";
 	mode = 750;
 	gameSetup(mode);
 }
 function hard(){
+	difficulty = "hard";
 	moves = 0;
 	document.getElementById("gameContent").innerHTML = "";
 	mode = 250;
@@ -173,6 +185,7 @@ function flip2(i){
 		pairs++;
 		if(pairs === 10){
 			alert('You Win!');
+			AddStats();
 			stop();
 		}
 	}
