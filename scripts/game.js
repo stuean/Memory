@@ -60,13 +60,44 @@ function AddStats(){
 	var time = $("#timer").val();
 	console.log(time);
 	GetJson("/newGame?" + user + "&" + difficulty + "&" moves + "&" + time).then((data) => {
-		console.log(data);
+		console.log("Game saved");
 	});
 }
 
 function updateBoard(){
 	GetJson("/Leaderboard").then((data) => {
-			console.log(data);
+		console.log(data);
+		
+		var e = [];
+		var m = [];
+		var h = [];
+		for(i=data.length-1;i>=0;i--){
+			if(data[i].difficulty === "easy"){
+				e.push(data.pop());
+			}
+			else if(data[i].difficulty === "medium"){
+				m.push(data.pop());
+			}
+			else if(data[i].difficulty === "hard"){
+				h.push(data.pop());
+			}
+		}
+		for(i=0;i<e.length;i++){
+			var p = document.createElement('p');
+			p = e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time;
+			document.getElementById("easyScores").appendChild(p);
+		}
+		for(i=0;i<m.length;i++){
+			var p = document.createElement('p');
+			p = m[i].uname + "  " + m[i].mode + "  " + m[i].moves + "  " + m[i].time;
+			document.getElementById("mediumScores").appendChild(p);
+		}
+		for(i=0;i<h.length;i++){
+			var p = document.createElement('p');
+			p = h[i].uname + "  " + h[i].mode + "  " + h[i].moves + "  " + h[i].time;
+			document.getElementById("hardScores").appendChild(p);
+		}	
+			
 	});
 }
 
