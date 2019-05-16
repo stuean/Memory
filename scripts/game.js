@@ -16,6 +16,7 @@ function init(){
 
 	$("#submit").click(UserSearch);
 	$("#submitNew").click(NewUser);
+//	$("#submitBoard").click(updateBoard);
 }
 
 function UserSearch() {
@@ -52,6 +53,12 @@ function NewUser(){
             }
         });
     }
+}
+
+function updateBoard(){
+	GetJson("/Leaderboard").then((data) => {
+			console.log(data);
+	});
 }
 
 
@@ -208,7 +215,6 @@ function Card(img, back){
 	this.img = img;
 	this.back = back;
 }	
-
 
 
 

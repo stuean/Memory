@@ -85,5 +85,29 @@ app.get('/NewU', (req, res) => {
 });
 
 
+app.get('/Leaderboard', (req, res) => {
+    var req_url = url.parse(req.url);
+	console.log("Hi");
+    db.all('SELECT * FROM stats', (err, rows) => {
+		console.log("Hello");
+        if (err) {
+            console.log(err);
+        }
+        else if (rows[0] === undefined){
+      		console.log("No game data!");
+		}
+		else{ 
+			res.writeHead(200, {'Content-Type': 'application/json'});
+            res.write(JSON.stringify(rows));
+            res.end();
+		}   
+    });
+});
+
+
+
+
+
+
 var server = app.listen(port);
 
