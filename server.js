@@ -98,9 +98,7 @@ app.get('/newGame', (req, res)=>{
 
 app.get('/Leaderboard', (req, res) => {
     var req_url = url.parse(req.url);
-	console.log("Hi");
-    db.all('SELECT * FROM stats', (err, rows) => {
-		console.log("Hello");
+    db.all('SELECT * FROM gamesPlayed', (err, rows) => {
         if (err) {
             console.log(err);
         }

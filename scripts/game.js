@@ -55,7 +55,7 @@ function NewUser(){
         });
     }
 }
-
+/*
 function AddStats(){
 	var time = $("#timer").val();
 	console.log(time);
@@ -63,7 +63,7 @@ function AddStats(){
 		console.log("Game saved");
 	});
 }
-
+*/
 function updateBoard(){
 	GetJson("/Leaderboard").then((data) => {
 		console.log(data);
@@ -71,31 +71,49 @@ function updateBoard(){
 		var e = [];
 		var m = [];
 		var h = [];
-		for(i=data.length-1;i>=0;i--){
-			if(data[i].difficulty === "easy"){
-				e.push(data.pop());
+		for(i=0;i<data.length;i++){
+			if(data[i].mode === "easy"){
+				e.push(data[i]);
 			}
-			else if(data[i].difficulty === "medium"){
-				m.push(data.pop());
+			else if(data[i].mode === "medium"){
+				m.push(data[i]);
 			}
-			else if(data[i].difficulty === "hard"){
-				h.push(data.pop());
+			else if(data[i].mode === "hard"){
+				h.push(data[i]);
 			}
 		}
+		console.log(e);
+		console.log(m);
+		console.log(h);
 		for(i=0;i<e.length;i++){
-			var p = document.createElement('p');
-			p = e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time;
-			document.getElementById("easyScores").appendChild(p);
+			var newRow = document.createElement("tr");
+			var newData = document.createElement("td");
+			var text = document.createTextNode(e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time);
+			
+			newData.appendChild(text);
+			newRow.appendChild(newData);
+			
+			document.getElementById("etable").appendChild(newRow);
 		}
 		for(i=0;i<m.length;i++){
-			var p = document.createElement('p');
-			p = m[i].uname + "  " + m[i].mode + "  " + m[i].moves + "  " + m[i].time;
-			document.getElementById("mediumScores").appendChild(p);
+			var newRow = document.createElement("tr");
+			var newData = document.createElement("td");
+			var text = document.createTextNode(m[i].uname + "  " + m[i].mode + "  " + m[i].moves + "  " + m[i].time);
+			
+			newData.appendChild(text);
+			newRow.appendChild(newData);
+			
+			document.getElementById("mtable").appendChild(newRow);
 		}
 		for(i=0;i<h.length;i++){
-			var p = document.createElement('p');
-			p = h[i].uname + "  " + h[i].mode + "  " + h[i].moves + "  " + h[i].time;
-			document.getElementById("hardScores").appendChild(p);
+			var newRow = document.createElement("tr");
+			var newData = document.createElement("td");
+			var text = document.createTextNode(h[i].uname + "  " + h[i].mode + "  " + h[i].moves + "  " + h[i].time);
+			
+			newData.appendChild(text);
+			newRow.appendChild(newData);
+			
+			document.getElementById("htable").appendChild(newRow);
 		}	
 			
 	});
