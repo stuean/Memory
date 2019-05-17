@@ -121,36 +121,69 @@ function updateBoard(){
 			}
 		}
 		
-		console.log(e);
-		console.log(m);
-		console.log(h);
 		for(i=0;i<e.length;i++){
 			var newRow = document.createElement("tr");
 			var newData = document.createElement("td");
-			var text = document.createTextNode(e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time);
+			var text = document.createTextNode(e[i].uname);
+			var newData2 = document.createElement("td");
+			var text2 = document.createTextNode(e[i].mode);
+			var newData3 = document.createElement("td");
+			var text3 = document.createTextNode(e[i].moves);
+			var newData4 = document.createElement("td");
+			var text4 = document.createTextNode(e[i].time);
 			
 			newData.appendChild(text);
+			newData2.appendChild(text2);
+			newData3.appendChild(text3);
+			newData4.appendChild(text4);
 			newRow.appendChild(newData);
+			newRow.appendChild(newData2);
+			newRow.appendChild(newData3);
+			newRow.appendChild(newData4);
 			
 			document.getElementById("etable").appendChild(newRow);
 		}
 		for(i=0;i<m.length;i++){
 			var newRow = document.createElement("tr");
 			var newData = document.createElement("td");
-			var text = document.createTextNode(m[i].uname + "  " + m[i].mode + "  " + m[i].moves + "  " + m[i].time);
+			var text = document.createTextNode(m[i].uname);
+			var newData2 = document.createElement("td");
+			var text2 = document.createTextNode(m[i].mode);
+			var newData3 = document.createElement("td");
+			var text3 = document.createTextNode(m[i].moves);
+			var newData4 = document.createElement("td");
+			var text4 = document.createTextNode(m[i].time);
 			
 			newData.appendChild(text);
+			newData2.appendChild(text2);
+			newData3.appendChild(text3);
+			newData4.appendChild(text4);
 			newRow.appendChild(newData);
+			newRow.appendChild(newData2);
+			newRow.appendChild(newData3);
+			newRow.appendChild(newData4);
 			
 			document.getElementById("mtable").appendChild(newRow);
 		}
 		for(i=0;i<h.length;i++){
 			var newRow = document.createElement("tr");
 			var newData = document.createElement("td");
-			var text = document.createTextNode(h[i].uname + "  " + h[i].mode + "  " + h[i].moves + "  " + h[i].time);
+			var text = document.createTextNode(h[i].uname);
+			var newData2 = document.createElement("td");
+			var text2 = document.createTextNode(h[i].mode);
+			var newData3 = document.createElement("td");
+			var text3 = document.createTextNode(h[i].moves);
+			var newData4 = document.createElement("td");
+			var text4 = document.createTextNode(h[i].time);
 			
 			newData.appendChild(text);
+			newData2.appendChild(text2);
+			newData3.appendChild(text3);
+			newData4.appendChild(text4);
 			newRow.appendChild(newData);
+			newRow.appendChild(newData2);
+			newRow.appendChild(newData3);
+			newRow.appendChild(newData4);
 			
 			document.getElementById("htable").appendChild(newRow);
 		}	
