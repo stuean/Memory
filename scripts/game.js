@@ -147,6 +147,7 @@ function updateBoard(){
 			var newRow = document.createElement("tr");
 			var newData = document.createElement("td");
 			var text = document.createTextNode(m[i].uname);
+			newData.setAttribute('onClick', GetUserStats(m[i].uname));
 			var newData2 = document.createElement("td");
 			var text2 = document.createTextNode(m[i].mode);
 			var newData3 = document.createElement("td");
@@ -191,8 +192,9 @@ function updateBoard(){
 	});
 }
 
-function GetUserStats(){
-	GetJson('/UserStats').then((data)=>{
+function GetUserStats(un){
+	console.log(un);
+	GetJson("/UserStats?" + un).then((data)=>{
 		console.log(data);
 	});
 }

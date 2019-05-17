@@ -117,11 +117,13 @@ app.get('/Leaderboard', (req, res) => {
 
 app.get('/UserStats', (req,res)=>{
   var req_url = url.parse(req.url);
-  db.all('SELECT * WHERE uname = ?', (err, rows)=>{
+  console.log(req_url.query);
+  db.all('SELECT * FROM gamesPlayed WHERE uname = ?', [req_url.query], (err, rows)=>{
+    console.log(req_url.query);
     if(err){
       console.log(err);
     }
-    else if(row[0]===undefined){
+    else if(rows[0]===undefined){
       console.log("No user data");
     }
     else{
