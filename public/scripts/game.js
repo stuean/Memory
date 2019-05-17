@@ -124,10 +124,10 @@ function updateBoard(){
 		for(i=0;i<e.length;i++){
 			var x = e[i].uname;
 			var newRow = document.createElement("tr");
-			var newData = document.createElement("td");
-			newData.addEventListener("click", function () {
+			newRow.addEventListener("click", function () {
 				GetUserStats(x);
 			});
+			var newData = document.createElement("td");
 			var text = document.createTextNode(e[i].uname);
 			var newData2 = document.createElement("td");
 			var text2 = document.createTextNode(e[i].mode);
@@ -175,7 +175,11 @@ function updateBoard(){
 
 		}
 		for(i=0;i<h.length;i++){
+			var x = h[i].uname;
 			var newRow = document.createElement("tr");
+			newRow.addEventListener("click", function () {
+				GetUserStats(x);
+			});
 			var newData = document.createElement("td");
 			var text = document.createTextNode(h[i].uname);
 			var newData2 = document.createElement("td");
@@ -202,8 +206,79 @@ function updateBoard(){
 
 function GetUserStats(e){
 	console.log(e);
+	var stats = [];
 	GetJson("/UserStats?" + e).then((data)=>{
 		console.log(data);
+		for(i=0;i<data.length;i++){
+			stats.push(data[i]);	
+		}
+		//Sorts stats
+		for(i=0;i<stats.length;i++){
+			for(j=0;j<stats.length;j++){
+				if(stats[i].moves<stats[j].moves){
+					var x;
+					var x = stats[i];
+					stats[i] = stats[j];
+					stats[j] = x;
+				}
+			}
+		}
+
+
+		//Creates table
+		var utable = document.createElement("table");
+			utable.setAttribute("id", "utable");
+			var cap = document.createElement("caption");
+			var capText = document.createTextNode("User Stats");
+			cap.appendChild(capText);
+			utable.appendChild(cap);
+
+			var firstRow = document.createElement("tr");
+			var head1 = document.createElement("th");
+			var h1text = document.createTextNode("User");
+			var head2 = document.createElement("th");
+			var h2text = document.createTextNode("Difficulty");
+			var head3 = document.createElement("th");
+			var h3text = document.createTextNode("Moves");
+			var head4 = document.createElement("th");
+			var h4text = document.createTextNode("Time");
+
+			head1.appendChild(h1text);
+			head2.appendChild(h2text);
+			head3.appendChild(h3text);
+			head4.appendChild(h4text);
+			firstRow.appendChild(head1);
+			firstRow.appendChild(head2);
+			firstRow.appendChild(head3);
+			firstRow.appendChild(head4);
+
+			utable.appendChild(firstRow);
+		//Adds stats to u table
+		for(i=0; i<stats.length; i++){
+
+			var newRow = document.createElement("tr");
+			var newData = document.createElement("td");
+			var text = document.createTextNode(stats[i].uname);
+			var newData2 = document.createElement("td");
+			var text2 = document.createTextNode(stats[i].mode);
+			var newData3 = document.createElement("td");
+			var text3 = document.createTextNode(stats[i].moves);
+			var newData4 = document.createElement("td");
+			var text4 = document.createTextNode(stats[i].time);
+			
+			newData.appendChild(text);
+			newData2.appendChild(text2);
+			newData3.appendChild(text3);
+			newData4.appendChild(text4);
+			newRow.appendChild(newData);
+			newRow.appendChild(newData2);
+			newRow.appendChild(newData3);
+			newRow.appendChild(newData4);
+			
+			utable.appendChild(newRow);
+			document.getElementById("userTable").appendChild(utable);
+		}
+
 	});
 }
 

@@ -23,8 +23,7 @@ body{
 #hard{
 	grid-column: 7 / 9;
 }
-input[type="password"]
-{
+input[type="password"]{
   -webkit-text-security: disc;
 }
 
@@ -36,7 +35,7 @@ img{
 }
 
 #header{
-	height: 10rem;
+	height: 7rem;
 	background-color: #f0bfff;
 	margin-bottom: 1rem;
 	display: inline;
@@ -48,7 +47,6 @@ img{
 }
 #gameTrackers{
 	display: inline;
-	float: right;
 }
 #user_login{
 	text-align: left;
