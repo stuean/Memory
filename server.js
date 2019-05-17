@@ -94,7 +94,7 @@ app.get('/newGame', (req, res)=>{
       res.end();
     }
   });
-  db.close();
+ 
 });
 
 
@@ -108,7 +108,6 @@ app.get('/Leaderboard', (req, res) => {
       		console.log("No game data!");
 		    }
 		    else{ 
-          db.close();
 			    res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify(rows));
           res.end();
