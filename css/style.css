@@ -24,6 +24,7 @@ body{
 	grid-column: 7 / 9;
 }
 
+
 img{
 	width: 200px;
 	height: auto;
@@ -31,7 +32,7 @@ img{
 }
 
 #header{
-	height: 7rem;
+	height: 10rem;
 	background-color: #f0bfff;
 	margin-bottom: 1rem;
 	display: inline;
@@ -42,14 +43,15 @@ img{
 	margin-top: 0.5rem;
 }
 #gameTrackers{
-	display: block;
+	display: inline;
+	float: right;
 }
 #user_login{
-	text-align: center;
+	text-align: left;
 	display: inline-block;
 }
 #new_user{
-	text-align: center;
+	text-align: left;
 	display: inline-block;
 	margin-bottom: 4rem;
 }

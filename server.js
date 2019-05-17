@@ -68,7 +68,7 @@ app.get('/NewU', (req, res) => {
       			}
       		});
           res.writeHead(200, {'Content-Type': 'application/json'});
-          res.write("success");
+          res.write("true");
           res.end();
 		    }
 		    else{ 
@@ -89,7 +89,9 @@ app.get('/newGame', (req, res)=>{
       console.log(err);
     }
     else{
-      console.log("Game saved");
+      res.writeHead(200, {'Content-Type': 'application/json'});
+      res.write("true");
+      res.end();
     }
   });
   db.close();
@@ -104,16 +106,32 @@ app.get('/Leaderboard', (req, res) => {
         }
         else if (rows[0] === undefined){
       		console.log("No game data!");
-		}
-		else{ 
-			res.writeHead(200, {'Content-Type': 'application/json'});
-            res.write(JSON.stringify(rows));
-            res.end();
+		    }
+		    else{ 
+          db.close();
+			    res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify(rows));
+          res.end();
 		}   
     });
 });
 
-
+app.get('/UserStats', (req,res)=>{
+  var req_url = url.parse(req.url);
+  db.all('SELECT * WHERE uname = ?', (err, rows)=>{
+    if(err){
+      console.log(err);
+    }
+    else if(row[0]===undefined){
+      console.log("No user data");
+    }
+    else{
+      res.writeHead(200, {'Content-Type': 'application/json'});
+      res.write(JSON.stringify(rows));
+      res.end();
+    }
+  })
+});
 
 
 

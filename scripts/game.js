@@ -11,6 +11,7 @@ var mode;
 var count = 0;
 var user;
 var pass;
+var getUser;
 
 function init(){
 	console.log("loaded");
@@ -32,6 +33,7 @@ function UserSearch() {
             }
             else{
             	console.log(data);
+            	localStorage.setItem("uname", user);
             	successfulSignIn();
             }
         });
@@ -49,21 +51,27 @@ function NewUser(){
             	existingUser();
             }
             else{
-            	console.log(data);
+            	console.log(user);
+            	localStorage.setItem("uname", user);
             	successfulSignIn();
             }
         });
     }
 }
-/*
-function AddStats(){
-	var time = $("#timer").val();
-	console.log(time);
-	GetJson("/newGame?" + user + "&" + difficulty + "&" moves + "&" + time).then((data) => {
-		console.log("Game saved");
+
+function addStats(){
+	var timer = $("#timer").val();
+	console.log(timer);
+	GetJson("/newGame?"+ user+ "&"+ difficulty+ "&"+ moves+ "&"+ timer).then((data)=>{
+		if (data === true){
+			console.log("score saved");
+		}
+		else{
+			console.log("not saved");
+		}
 	});
 }
-*/
+
 function updateBoard(){
 	GetJson("/Leaderboard").then((data) => {
 		console.log(data);
@@ -86,14 +94,16 @@ function updateBoard(){
 		console.log(m);
 		console.log(h);
 		for(i=0;i<e.length;i++){
-			var newRow = document.createElement("tr");
-			var newData = document.createElement("td");
-			var text = document.createTextNode(e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time);
-			
-			newData.appendChild(text);
-			newRow.appendChild(newData);
-			
-			document.getElementById("etable").appendChild(newRow);
+			var table = document.getElementById("etable");
+			var row = table.insertRow(i+1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+			cell1.innerHTML(e[i].uname);
+			cell1.innerHTML(e[i].mode);
+			cell1.innerHTML(e[i].moves);
+			cell1.innerHTML(e[i].time);
 		}
 		for(i=0;i<m.length;i++){
 			var newRow = document.createElement("tr");
@@ -116,6 +126,12 @@ function updateBoard(){
 			document.getElementById("htable").appendChild(newRow);
 		}	
 			
+	});
+}
+
+function GetUserStats(){
+	GetJson('/UserStats').then((data)=>{
+		console.log(data);
 	});
 }
 
@@ -192,7 +208,8 @@ function gameSetup(mode){
 	cards[19] = new Card('/images/students.jpg', '/images/cardback.jpg');
 	
 	shuffle(cards);
-	//console.log(cards);
+	user = localStorage.getItem("uname");
+	console.log(user);
 	
 	for(var i = 0; i < cards.length; i++){
 		var img = document.createElement('img');
@@ -233,9 +250,10 @@ function flip2(i){
 	if(cards[i].img === cards[cardOne].img){
 		pairs++;
 		if(pairs === 10){
-			alert('You Win!');
-			AddStats();
 			stop();
+			if(confirm("Click OK to save game!")){
+				addStats();
+			}
 		}
 	}
 	else{

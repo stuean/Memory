@@ -9,7 +9,7 @@
 		<script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     	<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-    	<link rel = "stylesheet" href = "css/style.css"/>
+    	<link rel = "stylesheet" href = "css/leaderboard.css"/>
 		
 	</head>
 	<body>
@@ -18,28 +18,53 @@
 				<h1>Leaderboard</h1>
 			</div>
 		</div>
-		
 		<button id = "leaderboard"><a href = "/game.html">Return to Game</a></button>
 		
 		<div id = "update">
 			<button id = "submitBoard" onclick = "updateBoard()">Update</button>
 		</div>
 		
-		<table id = "etable">
-		</table>
+		<div id = "easyTable">
+			<table id = "etable" border = 1>
+				<caption>Easy</caption>
+				<thead>
+				<tr>
+					<th>User</th>
+					<th>Difficulty</th>
+					<th>Moves</th>
+					<th>Time</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+		<br/>
+		<div id = "mediumTable">
+			<table id = "mtable" border = 1>
+				<caption>Medium</caption>
+				<thead>
+				<tr>
+					<th>User</th>
+					<th>Difficulty</th>
+					<th>Moves</th>
+					<th>Time</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
 		
 		</br>
-		</br>
-		</br>
-		
-		<table id = "mtable">
-		</table>
-		
-		</br>
-		</br>
-		</br>
-		
-		<table id = "htable">
+		<div id = "hardTable">
+			<table id = "htable" border = 1>
+				<caption>Hard</caption>
+				<thead>
+				<tr>
+					<th>User</th>
+					<th>Difficulty</th>
+					<th>Moves</th>
+					<th>Time</th>
+				</tr>
+				</thead>
+			</table>
 		</div>
 	
 		<script src="scripts/game.js"></script>
