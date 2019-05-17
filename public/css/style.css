@@ -23,6 +23,10 @@ body{
 #hard{
 	grid-column: 7 / 9;
 }
+input[type="password"]
+{
+  -webkit-text-security: disc;
+}
 
 
 img{
