@@ -122,8 +122,12 @@ function updateBoard(){
 		}
 		
 		for(i=0;i<e.length;i++){
+			var x = e[i].uname;
 			var newRow = document.createElement("tr");
 			var newData = document.createElement("td");
+			newData.addEventListener("click", function () {
+				GetUserStats(x);
+			});
 			var text = document.createTextNode(e[i].uname);
 			var newData2 = document.createElement("td");
 			var text2 = document.createTextNode(e[i].mode);
@@ -142,12 +146,15 @@ function updateBoard(){
 			newRow.appendChild(newData4);
 			
 			document.getElementById("etable").appendChild(newRow);
+
 		}
 		for(i=0;i<m.length;i++){
 			var newRow = document.createElement("tr");
+			newRow.addEventListener("click", function () {
+				GetUserStats(m[i].uname);
+			});
 			var newData = document.createElement("td");
 			var text = document.createTextNode(m[i].uname);
-			newData.setAttribute('onClick', GetUserStats(m[i].uname));
 			var newData2 = document.createElement("td");
 			var text2 = document.createTextNode(m[i].mode);
 			var newData3 = document.createElement("td");
@@ -165,6 +172,7 @@ function updateBoard(){
 			newRow.appendChild(newData4);
 			
 			document.getElementById("mtable").appendChild(newRow);
+
 		}
 		for(i=0;i<h.length;i++){
 			var newRow = document.createElement("tr");
@@ -192,9 +200,9 @@ function updateBoard(){
 	});
 }
 
-function GetUserStats(un){
-	console.log(un);
-	GetJson("/UserStats?" + un).then((data)=>{
+function GetUserStats(e){
+	console.log(e);
+	GetJson("/UserStats?" + e).then((data)=>{
 		console.log(data);
 	});
 }

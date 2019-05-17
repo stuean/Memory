@@ -117,7 +117,7 @@ app.get('/Leaderboard', (req, res) => {
 
 app.get('/UserStats', (req,res)=>{
   var req_url = url.parse(req.url);
-  console.log(req_url.query);
+ // console.log(req_url.query);
   db.all('SELECT * FROM gamesPlayed WHERE uname = ?', [req_url.query], (err, rows)=>{
     console.log(req_url.query);
     if(err){
