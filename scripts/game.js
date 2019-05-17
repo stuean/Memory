@@ -90,20 +90,49 @@ function updateBoard(){
 				h.push(data[i]);
 			}
 		}
+		for(i=0;i<e.length;i++){
+			for(j=0;j<e.length;j++){
+				if(e[i].moves<e[j].moves){
+					var x;
+					var x = e[i];
+					e[i] = e[j];
+					e[j] = x;
+				}
+			}
+		}
+		for(i=0;i<m.length;i++){
+			for(j=0;j<m.length;j++){
+				if(m[i].moves<m[j].moves){
+					var x;
+					var x = m[i];
+					m[i] = m[j];
+					m[j] = x;
+				}
+			}
+		}
+		for(i=0;i<h.length;i++){
+			for(j=0;j<h.length;j++){
+				if(h[i].moves<h[j].moves){
+					var x;
+					var x = h[i];
+					h[i] = h[j];
+					h[j] = x;
+				}
+			}
+		}
+		
 		console.log(e);
 		console.log(m);
 		console.log(h);
 		for(i=0;i<e.length;i++){
-			var table = document.getElementById("etable");
-			var row = table.insertRow(i+1);
-			var cell1 = row.insertCell(0);
-			var cell2 = row.insertCell(1);
-			var cell3 = row.insertCell(2);
-			var cell4 = row.insertCell(3);
-			cell1.innerHTML(e[i].uname);
-			cell1.innerHTML(e[i].mode);
-			cell1.innerHTML(e[i].moves);
-			cell1.innerHTML(e[i].time);
+			var newRow = document.createElement("tr");
+			var newData = document.createElement("td");
+			var text = document.createTextNode(e[i].uname + "  " + e[i].mode + "  " + e[i].moves + "  " + e[i].time);
+			
+			newData.appendChild(text);
+			newRow.appendChild(newData);
+			
+			document.getElementById("etable").appendChild(newRow);
 		}
 		for(i=0;i<m.length;i++){
 			var newRow = document.createElement("tr");
