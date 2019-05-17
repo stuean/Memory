@@ -1,0 +1,14 @@
+* {
+	font-family: "Futura", sans-serif;
+}
+body{
+	background-image: linear-gradient(white, grey);
+}
+
+#header{
+	width:100%;
+	height: 7rem;
+	background-color: #f0bfff;
+	margin-bottom: 1rem;
+	display: inline;
+}
